@@ -5,16 +5,16 @@ title: ERD Sistem Perpustakaan
 ---
 erDiagram
 direction LR
-    BUKU ||--|{ KATEGORI : termasuk
-    BUKU ||--|{ PETUGAS : dikelola
-    BUKU }|--|| RAK_BUKU : disimpan
-    BUKU }|--|{ TRANSAKSI : dimasukkan
-    TRANSAKSI }|--|{ PEMINJAM : dilakukan
+    buku ||--|{ kategori : termasuk
+    buku ||--|{ petugas : dikelola
+    buku }|--|| rak_buku : disimpan
+    buku }|--o| transaksi : diproses
+    transaksi |o--|{ peminjam : dilakukan
 
-    BUKU {
+    buku {
         string id_buku PK
         string judul_buku
-        string ISBN
+        string isbn
         string penulis
         string tanggal_rilis
         string penerbit
@@ -26,30 +26,30 @@ direction LR
         string id_rak_buku FK
     }
 
-    KATEGORI {
+    kategori {
         string id_kategori PK
         string nama_kategori
     }
 
-    RAK_BUKU {
+    rak_buku {
         string id_rak_buku PK
         int nomor_rak
         int kapasitas
     }
 
-    PETUGAS {
+    petugas {
         string id_petugas
         string nama_petugas
     }
 
-    PEMINJAM {
+    peminjam {
         string id_peminjam
         string nama_peminjam
         string alamat
         string nomor_hp
     }
 
-    TRANSAKSI {
+    transaksi {
         string id_transaksi PK
         string tanggal_transaksi
         string tanggal_batas_pengembalian
